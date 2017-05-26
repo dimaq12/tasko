@@ -1,8 +1,8 @@
 <template>
   <div id="timer">
     <div class="timer-controls row">
-      <input  class="inputs-group" type="text">
-      <select class="inputs-group" >
+      <input v-model="title" class="inputs-group" type="text">
+      <select v-model="currentProject" class="inputs-group" >
         <option :value="p" v-for="p in projects">{{ p }}</option>
       </select>
       <span class="output">{{ timeFromStart }}</span>
@@ -17,6 +17,8 @@
 export default{
   data: function(){
     return {
+      title: 'some title',
+      currentProject: '',
       btnStatus: 'Sart',
       isTimerWork: false,
       start: '',
@@ -49,8 +51,7 @@ export default{
       }
       
       if(status){
-        console.log(this.$http);
-        this.post({a:'test'});
+        this.post({'title': self.title, project: this.currentProject, start: this.start, end: self.now});
         this.btnStatus = 'Start';
         this.isTimerWork = false;
         clearInterval(this.timer);
