@@ -2,16 +2,24 @@
   <div class="task-list">
     <div v-for="date in uniqDates">
       {{ date }}
+      <one-day-task :date="date" :taskList="taskList"></one-day-task>
     </div>
-    <div v-for="task in getTasks">
-        {{ task.title }}, {{task.project}}
-    </div>
+    <!-- <div v-for="task in taskList">
+      {{ task.title}}
+    </div> -->
   </div>
+  
 </template>
 <script>
+import OneDayTask from './oneDayTask.vue'
+
 export default{
+  components: {
+    'one-day-task': OneDayTask
+  },
   data: function(){
     return {
+      stateStatus: true,
       taskList: [],
       uniqDates: []
     }
@@ -25,15 +33,19 @@ export default{
         }
       }
       return uniqDatesArray;
+    },
+    getTasks: function(){
+      this.$http.get('')
+          .then(response => this.taskList = response.body, err => console.log('error', err))
+          .then(response => this.uniqDates = this.getUniqDates(this.taskList), err => console.log('error', err));
     }
   },
+  mounted: function() {
+      this.getTasks();
+      console.log('ready')
+  },
   computed: {
-    getTasks: function(data){
-      this.$http.get('')
-        .then(response => this.taskList = response.body, response => console.log('error', response));
-        this.uniqDates = this.getUniqDates(this.taskList);
-        return this.taskList;
-    }
+    //
   }
 }
 </script>

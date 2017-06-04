@@ -1,8 +1,10 @@
 import Vue from 'vue'
 import VueResource from 'vue-resource'
+import VueFilter from 'vue-filter'
 import App from './App.vue'
 
 Vue.use(VueResource);
+Vue.use(VueFilter);
 
 // global configuration of Vue Resouse
 Vue.http.options.root = 'https://tasko-37a7c.firebaseio.com/data.json';
