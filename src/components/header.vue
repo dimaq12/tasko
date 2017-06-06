@@ -17,11 +17,17 @@ export default{
   
 </script>
 <style lang="scss">
-  header{
+  .header{
     width: 100%;
     background: #000;
     height: 80px;
     position: fixed;
+    .nav-menu{
+      a{
+        text-decoration:  none;
+        text-transform: uppercase;
+      }
+    }
     .row{
       height: 100%;
     }
