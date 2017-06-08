@@ -26,6 +26,6 @@ export default{
 .content{
 	padding-top: 80px;
 	box-sizing: border-box;
-	height: calc(100vh - 80px);
+	min-height: calc(100vh - 80px);
 }
 </style>

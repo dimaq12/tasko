@@ -1,7 +1,7 @@
 <template>
   <div>
       <div v-for="task in filterData()">
-           {{task.project}} , {{task.title}} , {{task.start}} , {{task.end}}
+           {{task.project}} , {{task.title}} <div>{{moment(task.start)}} , {{moment(task.end)}}</div>
       </div>
   </div>
 </template>
@@ -27,6 +27,9 @@ export default{
          let array = Object.keys(this.taskList).map(key => this.taskList[key]);
          console.log(array.filter(item => moment(item['start']).format("YYYY-MM-DD") == this.date));
          return array.filter(item => moment(item['start']).format("YYYY-MM-DD") == this.date);
+      },
+      moment(date){
+        return moment(date).format("MMMM Do YYYY, H:MM")
       }
     }
 }
