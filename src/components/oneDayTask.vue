@@ -1,6 +1,6 @@
 <template>
-  <div>
-      <div v-for="task in filterData()">
+  <div class="task-list-holder">
+      <div class="task-row" v-for="task in filterData()">
            {{task.project}} , {{task.title}} <div>{{moment(task.start)}} , {{moment(task.end)}}</div>
       </div>
   </div>
@@ -36,4 +36,19 @@ export default{
 
 </script>
 <style lang="scss">
+.task-list-holder{
+  .task-row{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    &:nth-child(odd){
+      background: fff;
+    }
+    &:nth-child(even){
+      background: grey;
+    }
+  }
+}
+
 </style>
