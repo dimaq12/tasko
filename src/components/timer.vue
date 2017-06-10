@@ -59,6 +59,7 @@ export default{
         this.btnStatus = 'Stop';
         this.isTimerWork = true;
         this.timer = timer();
+        this.$emit('hello', 'hello');
       }
     },
     post: function(data){

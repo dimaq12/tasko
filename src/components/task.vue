@@ -32,12 +32,15 @@ export default{
           uniqDatesArray.push(moment(list[el].start).format("YYYY-MM-DD"));
         }
       }
-      return uniqDatesArray;
+      return uniqDatesArray.reverse();
     },
     getTasks: function(){
       this.$http.get('')
           .then(response => this.taskList = response.body, err => console.log('error', err))
           .then(response => this.uniqDates = this.getUniqDates(this.taskList), err => console.log('error', err));
+      this.$on('hello', function(data){
+        console.log(data)
+      })
     }
   },
   mounted: function() {

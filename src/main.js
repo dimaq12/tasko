@@ -16,6 +16,8 @@ Vue.http.interceptors.push((request, next) => {
   next();
 })
 
+export const eventBus = new Vue();
+
 new Vue({
   el: '#app',
   render: h => h(App)

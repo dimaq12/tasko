@@ -1,7 +1,12 @@
 <template>
   <div class="task-list-holder">
       <div class="task-row" v-for="task in filterData()">
-           {{task.project}} , {{task.title}} <div>{{moment(task.start)}} , {{moment(task.end)}}</div>
+           <span>{{task.project}},</span>
+           <span>{{task.title}}</span> 
+           <div class="duration">
+              <span>{{moment(task.start)}}</span>
+              <span>{{moment(task.end)}}</span>
+           </div>
       </div>
   </div>
 </template>
@@ -26,7 +31,7 @@ export default{
       filterData() {
          let array = Object.keys(this.taskList).map(key => this.taskList[key]);
          console.log(array.filter(item => moment(item['start']).format("YYYY-MM-DD") == this.date));
-         return array.filter(item => moment(item['start']).format("YYYY-MM-DD") == this.date);
+         return array.filter(item => moment(item['start']).format("YYYY-MM-DD") == this.date).reverse();
       },
       moment(date){
         return moment(date).format("MMMM Do YYYY, H:MM")
@@ -42,6 +47,12 @@ export default{
     flex-direction: row;
     align-items: center;
     justify-content: center;
+    .duration{
+      span{
+        display: block;
+        min-width: 100%;
+      }
+    }
     &:nth-child(odd){
       background: fff;
     }
