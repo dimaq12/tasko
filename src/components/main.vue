@@ -28,4 +28,9 @@ export default{
 	box-sizing: border-box;
 	min-height: calc(100vh - 80px);
 }
+.center{
+	width: 100%;
+	max-width: 1200px;
+	margin: 0 auto;
+}
 </style>

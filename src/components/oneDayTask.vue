@@ -1,5 +1,5 @@
 <template>
-  <div class="task-list-holder">
+  <div class="center task-list-holder">
       <div class="task-row" v-for="task in filterData()">
            <span>{{task.project}},</span>
            <span>{{task.title}}</span> 

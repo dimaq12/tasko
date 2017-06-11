@@ -1,15 +1,12 @@
 <template>
   <div id="timer">
-    <div class="timer-controls row">
+    <div class="spce-btwn center timer-controls row">
       <input v-model="title" class="inputs-group" type="text">
       <select v-model="currentProject" class="inputs-group" >
         <option :value="p" v-for="p in projects">{{ p }}</option>
       </select>
       <span class="output">{{ timeFromStart }}</span>
       <button @click="runTimer(isTimerWork)" :class="{'start-btn-active': isTimerWork == true}" class="start-btn">{{ buttonText }}</button>
-      <div>
-
-      </div>
     </div>
   </div>
 </template>
@@ -72,6 +69,9 @@ export default{
 </script>
 
 <style>
+.spce-btwn{
+  justify-content: space-between;
+}
 .start-btn{
   width: 100px;
   height: 40px;
@@ -91,6 +91,7 @@ export default{
   box-sizing: border-box;
   font-size: 1.4em;
   margin: 10px 10px;
+  flex: 1;
 }
 .output{
   display: block;
