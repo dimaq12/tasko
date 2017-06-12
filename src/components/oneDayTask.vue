@@ -1,8 +1,8 @@
 <template>
   <div class="center task-list-holder">
       <div class="task-row" v-for="task in filterData()">
-           <span>{{task.project}},</span>
-           <span>{{task.title}}</span> 
+           <span class="poject">{{task.project || 'empty'}}</span>
+           <span class="title">{{task.title}}</span> 
            <div class="duration">
               <span>{{moment(task.start)}}</span>
               <span>{{moment(task.end)}}</span>
@@ -46,7 +46,15 @@ export default{
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
+    .poject{
+      max-width: 25%;
+      text-transform: uppercase;
+    }
+    .title{
+      max-width: 25%;
+      text-transform: uppercase;
+    }
     .duration{
       span{
         display: block;

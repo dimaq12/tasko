@@ -90,7 +90,7 @@ export default{
   padding: 10px;
   box-sizing: border-box;
   font-size: 1.4em;
-  margin: 10px 10px;
+  margin-right: 10px;
   flex: 1;
 }
 .output{
