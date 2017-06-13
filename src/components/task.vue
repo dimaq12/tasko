@@ -1,12 +1,9 @@
 <template>
   <div class="task-list">
-    <div v-for="date in uniqDates">
-      {{ date }}
+    <div clas="day-group" v-for="date in uniqDates">
+      <h3>{{ date }}</h3>
       <one-day-task :date="date" :taskList="taskList"></one-day-task>
     </div>
-    <!-- <div v-for="task in taskList">
-      {{ task.title}}
-    </div> -->
   </div>
   
 </template>
@@ -45,7 +42,7 @@ export default{
   },
   mounted: function() {
       this.getTasks();
-      console.log('ready')
+      console.log('ready', this.taskList)
   },
   computed: {
     //
@@ -53,4 +50,11 @@ export default{
 }
 </script>
 <style lang="scss">
+.day-group{
+  h3{
+      text-align: left;
+      background: orange;
+      color: #fff;
+  }
+}
 </style>

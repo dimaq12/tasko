@@ -46,12 +46,15 @@ export default{
     display: flex;
     flex-direction: row;
     align-items: center;
+    text-align: left;
     justify-content: space-between;
     .poject{
+      width: 100%;
       max-width: 25%;
       text-transform: uppercase;
     }
     .title{
+      width: 100%;
       max-width: 25%;
       text-transform: uppercase;
     }
