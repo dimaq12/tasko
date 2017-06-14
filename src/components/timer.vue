@@ -1,6 +1,6 @@
 <template>
   <div id="timer">
-    <div class="spce-btwn center timer-controls row">
+    <div class="spce-btwn timer-controls row">
       <input v-model="title" class="inputs-group" type="text">
       <select v-model="currentProject" class="inputs-group" >
         <option :value="p" v-for="p in projects">{{ p }}</option>
@@ -68,7 +68,7 @@ export default{
   
 </script>
 
-<style>
+<style lang="scss">
 .spce-btwn{
   justify-content: space-between;
 }

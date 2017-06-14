@@ -1,6 +1,6 @@
 <template>
   <div class="task-list">
-    <div clas="day-group" v-for="date in uniqDates">
+    <div class="day-group center" v-for="date in uniqDates">
       <h3>{{ date }}</h3>
       <one-day-task :date="date" :taskList="taskList"></one-day-task>
     </div>
@@ -50,11 +50,15 @@ export default{
 }
 </script>
 <style lang="scss">
-.day-group{
-  h3{
-      text-align: left;
-      background: orange;
-      color: #fff;
+  .day-group{
+      h3{
+          text-align: left;
+          background: orange;
+          color: #fff;
+          padding: 5px;
+          float: left;
+          border-radius: 5px;
+          margin: 0;
+      }
   }
-}
 </style>

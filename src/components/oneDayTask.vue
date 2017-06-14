@@ -43,6 +43,7 @@ export default{
 <style lang="scss">
 .task-list-holder{
   .task-row{
+    width: 100%;
     display: flex;
     flex-direction: row;
     align-items: center;
