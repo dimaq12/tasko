@@ -42,6 +42,13 @@ export default{
 </script>
 <style lang="scss">
 .task-list-holder{
+  padding: 3px 20px;
+  background: #eee;
+  float: left;
+  margin: 5px 0;
+  border: 1px solid #42b983;
+  border-radius: 5px;
+  box-sizing:border-box;
   .task-row{
     width: 100%;
     display: flex;
@@ -49,6 +56,7 @@ export default{
     align-items: center;
     text-align: left;
     justify-content: space-between;
+    border-bottom: 1px solid #42b983;
     .poject{
       width: 100%;
       max-width: 25%;
@@ -65,11 +73,8 @@ export default{
         min-width: 100%;
       }
     }
-    &:nth-child(odd){
-      background: fff;
-    }
-    &:nth-child(even){
-      background: grey;
+    &:last-child{
+      border: none;
     }
   }
 }

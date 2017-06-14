@@ -51,6 +51,7 @@ export default{
 </script>
 <style lang="scss">
   .day-group{
+    overflow: hidden;
       h3{
           text-align: left;
           background: orange;
@@ -58,7 +59,7 @@ export default{
           padding: 5px;
           float: left;
           border-radius: 5px;
-          margin: 0;
+          margin: 15px 0 3px 0;
       }
   }
 </style>
