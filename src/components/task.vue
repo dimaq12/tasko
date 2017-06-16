@@ -1,7 +1,7 @@
 <template>
   <div class="task-list">
     <div class="day-group center" v-for="date in uniqDates">
-      <h3>{{ date }}</h3>
+      <h3>{{ ifToday(date) }}</h3>
       <one-day-task :date="date" :taskList="taskList"></one-day-task>
     </div>
   </div>
@@ -34,10 +34,17 @@ export default{
     getTasks: function(){
       this.$http.get('')
           .then(response => this.taskList = response.body, err => console.log('error', err))
-          .then(response => this.uniqDates = this.getUniqDates(this.taskList), err => console.log('error', err));
-      this.$on('hello', function(data){
-        console.log(data)
-      })
+          .then(response => this.uniqDates = this.getUniqDates(this.taskList), err => console.log('error', err))
+      // this.$on('hello', function(data){
+      //   console.log(data)
+      // })
+    },
+    ifToday(date){
+      if (moment(date).isSame(Date.now(), 'd')) {
+        return 'Today ' + date
+      } else {
+        return date
+      }
     }
   },
   mounted: function() {

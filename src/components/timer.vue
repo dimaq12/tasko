@@ -48,7 +48,12 @@ export default{
       }
       
       if(status){
-        this.post({'title': self.title, project: this.currentProject, start: this.start, end: self.now});
+        this.post({
+            title: self.title, 
+            project: this.currentProject, 
+            start: this.start, 
+            end: moment(Date.now())
+          });
         this.btnStatus = 'Start';
         this.isTimerWork = false;
         clearInterval(this.timer);
@@ -59,6 +64,7 @@ export default{
         this.$emit('hello', 'hello');
       }
     },
+
     post: function(data){
       this.$http.post('', data)
         .then(response => console.log(response.body), response => console.log('error', response))

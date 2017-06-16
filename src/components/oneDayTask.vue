@@ -4,8 +4,8 @@
            <span class="poject">{{task.project || 'empty'}}</span>
            <span class="title">{{task.title}}</span> 
            <div class="duration">
-              <span>{{moment(task.start)}}</span>
-              <span>{{moment(task.end)}}</span>
+              <span>{{format(task.start)}}</span>
+              <span>{{format(task.end)}}</span>
            </div>
       </div>
   </div>
@@ -30,11 +30,14 @@ export default{
     methods:{
       filterData() {
          let array = Object.keys(this.taskList).map(key => this.taskList[key]);
-         console.log(array.filter(item => moment(item['start']).format("YYYY-MM-DD") == this.date));
+         console.log(array.filter(item => moment(item['start']).format("YYYY-MM-DD") == this.date)[0].end);
          return array.filter(item => moment(item['start']).format("YYYY-MM-DD") == this.date).reverse();
       },
-      moment(date){
-        return moment(date).format("MMMM Do YYYY, H:MM")
+      format(date){
+        let see;
+        see = moment(date).format("YYYY-MM-DD, HH:mm:ss");
+        console.log(see);
+        return see;
       }
     }
 }
@@ -70,7 +73,7 @@ export default{
     .duration{
       span{
         display: block;
-        min-width: 100%;
+        min-width: 160px;
       }
     }
     &:last-child{
