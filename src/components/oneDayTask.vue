@@ -7,6 +7,7 @@
               <span>{{format(task.start)}}</span>
               <span>{{format(task.end)}}</span>
            </div>
+           <button class="new-one-btn">New One</button>
       </div>
   </div>
 </template>
@@ -72,10 +73,22 @@ export default{
         min-width: 160px;
       }
     }
+    .new-one-btn{
+      background: #62b7f3;
+      border-radius:5px;
+      color:#fff;
+      width: 100px;
+      height: 35px;
+      outline: none;
+      border: none;
+      transition: 0.3s;
+      &:hover{
+        background: #61ade2;
+      }
+    }
     &:last-child{
       border: none;
     }
   }
 }
-
 </style>
