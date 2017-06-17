@@ -30,14 +30,10 @@ export default{
     methods:{
       filterData() {
          let array = Object.keys(this.taskList).map(key => this.taskList[key]);
-         console.log(array.filter(item => moment(item['start']).format("YYYY-MM-DD") == this.date)[0].end);
          return array.filter(item => moment(item['start']).format("YYYY-MM-DD") == this.date).reverse();
       },
       format(date){
-        let see;
-        see = moment(date).format("YYYY-MM-DD, HH:mm:ss");
-        console.log(see);
-        return see;
+        return moment(date).format("YYYY-MM-DD, HH:mm:ss");
       }
     }
 }
