@@ -60,12 +60,10 @@ export default{
     .poject{
       width: 100%;
       max-width: 25%;
-      text-transform: uppercase;
     }
     .title{
       width: 100%;
       max-width: 25%;
-      text-transform: uppercase;
     }
     .duration{
       span{
@@ -78,7 +76,7 @@ export default{
       border-radius:5px;
       color:#fff;
       width: 100px;
-      height: 35px;
+      height: 30px;
       outline: none;
       border: none;
       transition: 0.3s;

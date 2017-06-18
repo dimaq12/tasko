@@ -20,7 +20,7 @@ export default{
       isTimerWork: false,
       start: '',
       now: '',
-      projects: ['timer', 'atomic bomb', 'Tesla coil', 'death beam', 'secret mega project'],
+      projects: ['Timer', 'Atomic Bomb', 'Tesla Coil', 'Death Beam', 'Secret Mega Project'],
       timer: ''
     }
   },

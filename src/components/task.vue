@@ -59,14 +59,19 @@ export default{
 <style lang="scss">
   .day-group{
     overflow: hidden;
-      h3{
-          text-align: left;
-          background: orange;
-          color: #fff;
-          padding: 5px;
-          float: left;
-          border-radius: 5px;
-          margin: 15px 0 3px 0;
+    h3{
+        text-align: left;
+        background: orange;
+        color: #fff;
+        padding: 5px;
+        float: left;
+        border-radius: 5px;
+        margin: 15px 0 3px 0;
+    }
+    &:last-child{
+      .task-list-holder{
+              margin-bottom: 30px;
       }
+    }
   }
 </style>
