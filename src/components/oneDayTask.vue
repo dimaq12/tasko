@@ -4,8 +4,8 @@
            <span class="poject">{{task.project || 'empty'}}</span>
            <span class="title">{{task.title}}</span> 
            <div class="duration">
-              <span>{{format(task.start)}}</span>
-              <span>{{format(task.end)}}</span>
+              <span class="marked-from">{{format(task.start)}}</span>
+              <span class="marked-to">{{format(task.end)}}</span>
            </div>
            <button class="new-one-btn">New One</button>
       </div>
@@ -23,26 +23,38 @@ export default{
 			required:false
 		}
 	},
-    data: function(){
-    	return{
-    		tasks: this.taskList
-    	}
+  methods:{
+    filterData() {
+        let array = Object.keys(this.taskList).map(key => this.taskList[key]);
+        return array.filter(item => moment(item['start']).format("YYYY-MM-DD") == this.date).reverse();
     },
-    methods:{
-      filterData() {
-         let array = Object.keys(this.taskList).map(key => this.taskList[key]);
-         return array.filter(item => moment(item['start']).format("YYYY-MM-DD") == this.date).reverse();
-      },
-      format(date){
-        return moment(date).format("YYYY-MM-DD, HH:mm:ss");
-      }
+    format(date){
+      return moment(date).format("YYYY-MM-DD, HH:mm:ss");
     }
+  }
 }
 
 </script>
 <style lang="scss">
+@mixin marked{
+  display: block;
+  position: relative;
+  min-width: 160px;
+}
+@mixin markedWord{
+  position: absolute;
+  display: block;
+  min-width: 33px;
+  text-align: center;
+  left: -40px;
+  top: 0px;
+  padding: 1px 3px;
+  color: #fff;
+  background: grey;
+  border-radius: 3px;
+}
 .task-list-holder{
-  padding: 3px 20px;
+  padding: 0px 20px;
   background: #eee;
   float: left;
   margin: 5px 0;
@@ -66,9 +78,24 @@ export default{
       max-width: 25%;
     }
     .duration{
-      span{
-        display: block;
-        min-width: 160px;
+      height: 45px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      margin: 5px 0;
+      .marked-from{
+        @include marked;
+        &:before{
+          content: 'from';
+          @include markedWord;
+        }
+      }
+      .marked-to{
+        @include marked;
+        &:before{
+          content: 'to';
+          @include markedWord;
+        }
       }
     }
     .new-one-btn{

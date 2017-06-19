@@ -22,6 +22,7 @@ export default{
     background: #000;
     height: 80px;
     position: fixed;
+    z-index: 5;
     .nav-menu{
       a{
         text-decoration:  none;

@@ -35,9 +35,6 @@ export default{
       this.$http.get('')
           .then(response => this.taskList = response.body, err => console.log('error', err))
           .then(response => this.uniqDates = this.getUniqDates(this.taskList), err => console.log('error', err))
-      // this.$on('hello', function(data){
-      //   console.log(data)
-      // })
     },
     ifToday(date){
       if (moment(date).isSame(Date.now(), 'd')) {
@@ -50,9 +47,6 @@ export default{
   mounted: function() {
       this.getTasks();
       console.log('ready', this.taskList)
-  },
-  computed: {
-    //
   }
 }
 </script>
