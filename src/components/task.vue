@@ -1,6 +1,6 @@
 <template>
-  <div class="task-list">
-    <div class="day-group center" v-for="date in uniqDates">
+  <div class="task-list center">
+    <div class="day-group" v-for="date in uniqDates">
       <h3>{{ ifToday(date) }}</h3>
       <one-day-task :date="date" :taskList="taskList"></one-day-task>
     </div>
@@ -51,6 +51,11 @@ export default{
 }
 </script>
 <style lang="scss">
+.task-list{
+padding: 20px;
+position: relative;
+border: 1px solid #42b983;
+box-sizing: border-box;
   .day-group{
     overflow: hidden;
     h3{
@@ -64,8 +69,21 @@ export default{
     }
     &:last-child{
       .task-list-holder{
-              margin-bottom: 30px;
+          margin-bottom: 30px;
       }
     }
   }
+  &:before{
+    content: 'Days';
+    position: fixed;
+    background: #42b983;
+    transform: rotate(90deg) ;
+    left: -1px;
+    top: 50%;
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 1.5em;
+    padding: 5px 25px;
+  }
+}
 </style>
