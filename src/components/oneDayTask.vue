@@ -7,11 +7,13 @@
               <span class="marked-from">{{format(task.start)}}</span>
               <span class="marked-to">{{format(task.end)}}</span>
            </div>
-           <button class="new-one-btn">New One</button>
+           <button @click="emitGlobalClickEvent()" class="new-one-btn">New One</button>
       </div>
   </div>
 </template>
 <script>
+import { eventBus } from '../main.js';
+
 export default{
 	props: {
 		date: {
@@ -30,6 +32,11 @@ export default{
     },
     format(date){
       return moment(date).format("YYYY-MM-DD, HH:mm:ss");
+    },
+    emitGlobalClickEvent() {
+      let data = 111;
+      // Send the event on a channel (i-got-clicked) with a payload (the click count.)
+      eventBus.$emit('i-got-clicked', data);
     }
   }
 }

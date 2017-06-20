@@ -11,6 +11,8 @@
   </div>
 </template>
 <script>
+import { eventBus } from '../main.js';
+
 export default{
   data: function(){
     return {
@@ -64,11 +66,16 @@ export default{
         this.$emit('hello', 'hello');
       }
     },
-
     post: function(data){
       this.$http.post('', data)
         .then(response => console.log(response.body), response => console.log('error', response))
     }
+  },
+  mounted: function() {
+    console.log('Event Bus was executed!')
+    eventBus.$on('i-got-clicked', data => {
+      console.log(`Oh, that's nice. It's gotten ${data} clicks! :)`)
+    });
   }
 }
   
