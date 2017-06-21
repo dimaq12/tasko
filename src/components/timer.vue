@@ -48,7 +48,6 @@ export default{
         }, 1000);
         return timer;
       }
-      
       if(status){
         this.post({
             title: self.title, 
@@ -63,8 +62,9 @@ export default{
         this.btnStatus = 'Stop';
         this.isTimerWork = true;
         this.timer = timer();
-        this.$emit('hello', 'hello');
+        
       }
+      eventBus.$emit('refresh');
     },
     post: function(data){
       this.$http.post('', data)
@@ -72,7 +72,6 @@ export default{
     }
   },
   mounted: function() {
-    console.log('Event Bus was executed!')
     eventBus.$on('i-got-clicked', data => {
       console.log(`Oh, that's nice. It's gotten ${data} clicks! :)`)
     });

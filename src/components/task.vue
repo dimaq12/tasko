@@ -9,6 +9,7 @@
 </template>
 <script>
 import OneDayTask from './oneDayTask.vue'
+import { eventBus } from '../main.js';
 
 export default{
   components: {
@@ -45,8 +46,13 @@ export default{
     }
   },
   mounted: function() {
+    this.getTasks();
+    eventBus.$on('refresh', () => {
       this.getTasks();
-      console.log('ready', this.taskList)
+      setTimeout(() => {
+          this.$forceUpdate();
+      }, 1000)
+    });
   }
 }
 </script>
