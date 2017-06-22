@@ -72,8 +72,7 @@ export default{
     }
   },
   mounted: function() {
-    eventBus.$on('i-got-clicked', data => {
-      console.log(`Oh, that's nice. It's gotten ${data} clicks! :)`)
+    eventBus.$on('new-one-task', data => {
     });
   }
 }
