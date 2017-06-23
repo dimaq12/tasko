@@ -1,13 +1,13 @@
 <template>
   <div class="center task-list-holder">
       <div class="task-row" v-for="task in filterData()">
-           <span class="poject">{{task.project || 'empty'}}</span>
            <span class="title">{{task.title}}</span> 
+           <span class="poject">{{task.project || 'empty'}}</span>
            <div class="duration">
               <span class="marked-from">{{format(task.start)}}</span>
               <span class="marked-to">{{format(task.end)}}</span>
            </div>
-           <button @click="runTimer(task.project, task.title)" class="new-one-btn">New One</button>
+           <button @click="runTimer(task.title, task.project)" class="new-one-btn">New One</button>
       </div>
   </div>
 </template>
@@ -33,8 +33,8 @@ export default{
     format(date){
       return moment(date).format("YYYY-MM-DD, HH:mm:ss");
     },
-    runTimer(project, title) {
-      eventBus.$emit('i-got-clicked', {project, title});
+    runTimer(title, project) {
+      eventBus.$emit('new-one-task', {title, project});
     }
   }
 }

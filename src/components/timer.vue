@@ -73,6 +73,9 @@ export default{
   },
   mounted: function() {
     eventBus.$on('new-one-task', data => {
+      this.title = data.title;
+      this.currentProject = data.project;
+      this.runTimer(this.isTimerWork);
     });
   }
 }
