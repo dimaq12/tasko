@@ -3,9 +3,12 @@
       <div class="task-row" v-for="task in filterData()">
            <span class="title">{{task.title}}</span> 
            <span class="poject">{{task.project || 'empty'}}</span>
-           <div class="duration">
+           <div class="from-to">
               <span class="marked-from">{{format(task.start)}}</span>
               <span class="marked-to">{{format(task.end)}}</span>
+           </div>
+           <div class="duration">
+              <span>{{duration(task.end, task.start)}}</span>
            </div>
            <button @click="runTimer(task.title, task.project)" class="new-one-btn">New One</button>
       </div>
@@ -33,7 +36,11 @@ export default{
     format(date){
       return moment(date).format("YYYY-MM-DD, HH:mm:ss");
     },
+    duration(now, then){
+      return moment.utc(moment(now,"YYYY-MM-DD HH:mm:ss").diff(moment(then,"YYYY-MM-DD HH:mm:ss"))).format("HH:mm:ss")
+    },
     runTimer(title, project) {
+      this.disableBtn = true;
       eventBus.$emit('new-one-task', {title, project});
     }
   }
@@ -82,7 +89,7 @@ export default{
       width: 100%;
       max-width: 25%;
     }
-    .duration{
+    .from-to{
       height: 45px;
       display: flex;
       flex-direction: column;
