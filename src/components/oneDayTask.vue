@@ -58,7 +58,7 @@ export default{
   display: block;
   min-width: 33px;
   text-align: center;
-  left: -40px;
+  left: -45px;
   top: 0px;
   padding: 1px 3px;
   color: #fff;
