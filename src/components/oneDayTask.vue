@@ -10,7 +10,7 @@
            <div class="duration">
               <span>{{duration(task.end, task.start)}}</span>
            </div>
-           <button @click="runTimer(task.title, task.project)" class="new-one-btn">New One</button>
+           <button @click="runTimer(task.title, task.project)" :class="{'disable': disable == true}" class="new-one-btn">New One</button>
       </div>
   </div>
 </template>
@@ -28,6 +28,11 @@ export default{
 			required:false
 		}
 	},
+  data: function(){
+    return {
+      disable: false
+    }
+  },
   methods:{
     filterData() {
         let array = Object.keys(this.taskList).map(key => this.taskList[key]);
@@ -40,9 +45,21 @@ export default{
       return moment.utc(moment(now,"YYYY-MM-DD HH:mm:ss").diff(moment(then,"YYYY-MM-DD HH:mm:ss"))).format("HH:mm:ss")
     },
     runTimer(title, project) {
-      this.disableBtn = true;
-      eventBus.$emit('new-one-task', {title, project});
+      if(!this.disable){
+        eventBus.$emit('new-one-task', {title, project});
+        eventBus.$emit('disable');
+      }
     }
+  },
+  mounted: function() {
+      eventBus.$on('disable', () => {
+        this.disable = true;
+        console.log('disable', this.disable)
+      });
+      eventBus.$on('enable', () => {
+        this.disable = false;
+        console.log('enable', this.disable)
+      });
   }
 }
 
@@ -119,6 +136,15 @@ export default{
       outline: none;
       border: none;
       transition: 0.3s;
+      &.disable{
+        background:grey;
+      }
+      &.disable{
+        background:grey;
+        &:hover{
+          background: grey;
+        }
+      }
       &:hover{
         background: #61ade2;
       }

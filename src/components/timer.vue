@@ -62,9 +62,9 @@ export default{
         this.btnStatus = 'Stop';
         this.isTimerWork = true;
         this.timer = timer();
-        
       }
       eventBus.$emit('refresh');
+      eventBus.$emit('enable');
     },
     post: function(data){
       this.$http.post('', data)

@@ -58,10 +58,6 @@ export default{
 </script>
 <style lang="scss">
 .task-list{
-padding: 20px;
-position: relative;
-border: 1px solid #42b983;
-box-sizing: border-box;
   .day-group{
     overflow: hidden;
     h3{
@@ -78,18 +74,6 @@ box-sizing: border-box;
           margin-bottom: 30px;
       }
     }
-  }
-  &:before{
-    content: 'Days';
-    position: fixed;
-    background: #42b983;
-    transform: rotate(90deg) ;
-    left: -1px;
-    top: 50%;
-    color: #fff;
-    text-transform: uppercase;
-    font-size: 1.5em;
-    padding: 5px 25px;
   }
 }
 </style>
