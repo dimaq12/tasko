@@ -54,11 +54,9 @@ export default{
   mounted: function() {
       eventBus.$on('disable', () => {
         this.disable = true;
-        console.log('disable', this.disable)
       });
       eventBus.$on('enable', () => {
         this.disable = false;
-        console.log('enable', this.disable)
       });
   }
 }

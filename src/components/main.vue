@@ -12,7 +12,6 @@ import Task from './task.vue'
 export default{
 	data: function(){
 		return {
-
 		}
 	},
 	components: {
