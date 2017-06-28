@@ -48,6 +48,7 @@ export default{
       if(!this.disable){
         eventBus.$emit('new-one-task', {title, project});
         eventBus.$emit('disable');
+        window.scrollTo(0, 0);
       }
     }
   },
