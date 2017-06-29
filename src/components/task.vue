@@ -1,5 +1,12 @@
 <template>
   <div class="task-list center">
+    <div class="task-list-header">
+        <span>Title</span>
+        <span>Project</span>
+        <span>Time</span>
+        <span>Duration</span>
+        <span>New One Task</span>
+    </div>
     <div class="day-group" v-for="date in uniqDates">
       <h3>{{ ifToday(date) }}</h3>
       <one-day-task :date="date" :taskList="taskList"></one-day-task>
@@ -60,6 +67,9 @@ export default{
 .task-list{
   .day-group{
     overflow: hidden;
+    .task-list-header{
+      background: #42b983;
+    }
     h3{
         text-align: left;
         background: orange;
