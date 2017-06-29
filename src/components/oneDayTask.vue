@@ -98,19 +98,20 @@ export default{
     justify-content: space-between;
     border-bottom: 1px solid #42b983;
     .poject{
-      width: 100%;
-      max-width: 25%;
+      min-width: 25%;
     }
     .title{
-      width: 100%;
-      max-width: 25%;
+      min-width: 25%;
     }
     .from-to{
       height: 45px;
+      min-width: 20%;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
       margin: 5px 0;
+      padding-left: 50px;
+      box-sizing: border-box;
       .marked-from{
         @include marked;
         &:before{
@@ -126,6 +127,9 @@ export default{
         }
       }
     }
+    .duration{
+      min-width: 15%;
+    }
     .new-one-btn{
       background: #62b7f3;
       border-radius:5px;
@@ -135,6 +139,7 @@ export default{
       outline: none;
       border: none;
       transition: 0.3s;
+      margin: auto;
       &.disable{
         background:grey;
       }

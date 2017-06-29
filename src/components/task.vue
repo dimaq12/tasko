@@ -1,11 +1,11 @@
 <template>
   <div class="task-list center">
     <div class="task-list-header">
-        <span>Title</span>
-        <span>Project</span>
-        <span>Time</span>
-        <span>Duration</span>
-        <span>New One Task</span>
+        <span class="poject">Title</span>
+        <span class="title">Project</span>
+        <span class="time">Time</span>
+        <span class="duration">Duration</span>
+        <span class="new-task">New One Task</span>
     </div>
     <div class="day-group" v-for="date in uniqDates">
       <h3>{{ ifToday(date) }}</h3>
@@ -65,6 +65,37 @@ export default{
 </script>
 <style lang="scss">
 .task-list{
+  .task-list-header{
+    background: #42b983;
+    color: #fff;
+    padding: 5px 25px;
+    display: flex;
+    justify-content: space-between;
+    span{
+      display: block;
+      text-align: left;
+      width: 100%;
+      max-width: 25%;
+    }
+    .poject{
+      width: 100%;
+      min-width: 25%;
+    }
+    .title{
+      width: 100%;
+      min-width: 25%;
+    }
+    .time{
+      min-width: 20%
+    }
+    .duration{
+      min-width: 15%
+    }
+    .new-task{
+      text-align: center;
+      min-width: 15%
+    }
+  }
   .day-group{
     overflow: hidden;
     .task-list-header{
