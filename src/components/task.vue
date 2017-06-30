@@ -1,11 +1,13 @@
 <template>
   <div class="task-list center">
-    <div class="task-list-header">
+    <div v-sticky class="task-list-header">
+      <div class="task-list-header-center">
         <span class="poject">Title</span>
         <span class="title">Project</span>
         <span class="time">Time</span>
         <span class="duration">Duration</span>
         <span class="new-task">New One Task</span>
+      </div>
     </div>
     <div class="day-group" v-for="date in uniqDates">
       <h3>{{ ifToday(date) }}</h3>
@@ -60,6 +62,19 @@ export default{
           this.$forceUpdate();
       }, 1000)
     });
+  },
+  directives:{
+    sticky:{
+      bind(el, binding, vnode) {
+        window.onscroll = function() {
+          if (window.pageYOffset > 80){
+            el.classList.add("fixed");
+          } else {
+            el.classList.remove("fixed");
+          }
+        }
+      }
+    }
   }
 }
 </script>
@@ -69,31 +84,46 @@ export default{
     background: #42b983;
     color: #fff;
     padding: 5px 25px;
-    display: flex;
-    justify-content: space-between;
-    span{
-      display: block;
-      text-align: left;
+    box-sizing: border-box;
+    .task-list-header-center{
+      display: flex;
+      justify-content: space-between;
+      span{
+        display: block;
+        text-align: left;
+        width: 100%;
+        max-width: 25%;
+      }
+      .poject{
+        width: 100%;
+        min-width: 25%;
+      }
+      .title{
+        width: 100%;
+        min-width: 25%;
+      }
+      .time{
+        min-width: 20%
+      }
+      .duration{
+        min-width: 15%
+      }
+      .new-task{
+        text-align: center;
+        min-width: 15%
+      }
+    }
+    &.fixed{
       width: 100%;
-      max-width: 25%;
-    }
-    .poject{
-      width: 100%;
-      min-width: 25%;
-    }
-    .title{
-      width: 100%;
-      min-width: 25%;
-    }
-    .time{
-      min-width: 20%
-    }
-    .duration{
-      min-width: 15%
-    }
-    .new-task{
-      text-align: center;
-      min-width: 15%
+      position: fixed;
+      left: 0;
+      top: 80px;
+      z-index: 10;
+      .task-list-header-center{
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
     }
   }
   .day-group{
